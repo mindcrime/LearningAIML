@@ -1,7 +1,9 @@
 package org.example.fogbeam.xmpp;
 
+import java.io.InputStream;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Properties;
 
 import org.jivesoftware.smack.AbstractXMPPConnection;
 import org.jivesoftware.smack.ConnectionListener;
@@ -18,9 +20,14 @@ public class BotMain
 {
 	public static void main( String[] args ) throws Exception
 	{
+		Properties props = new Properties();
+		try (final InputStream stream =
+		           BotMain.class.getClassLoader().getResourceAsStream("config.properties")) {
+		    props.load(stream);
+		}
 		
 		XMPPTCPConnectionConfiguration.Builder configBuilder = XMPPTCPConnectionConfiguration.builder();
-		configBuilder.setUsernameAndPassword("testuser1", "password");
+		configBuilder.setUsernameAndPassword( props.getProperty("username"), props.getProperty( "password" ) );
 		configBuilder.setResource("SomeResource");
 		configBuilder.setServiceName("fogbeam.org");
 		configBuilder.setHost( "www.fogbeam.org" );
@@ -119,7 +126,7 @@ public class BotMain
 					public void chatCreated(Chat chat, boolean createdLocally)
 					{
 						if (!createdLocally)
-							chat.addMessageListener(new MyNewMessageListener());;
+							chat.addMessageListener(new AIML_Interpreter_MessageListener());;
 					}
 				});	
 		
