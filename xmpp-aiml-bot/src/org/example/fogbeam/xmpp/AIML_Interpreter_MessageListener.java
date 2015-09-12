@@ -5,12 +5,12 @@ import org.jivesoftware.smack.chat.Chat;
 import org.jivesoftware.smack.chat.ChatMessageListener;
 import org.jivesoftware.smack.packet.Message;
 
-public class MyNewMessageListener implements ChatMessageListener 
+public class AIML_Interpreter_MessageListener implements ChatMessageListener 
 {
 
 	private org.alicebot.ab.Chat chatSession;
 	
-	public MyNewMessageListener()
+	public AIML_Interpreter_MessageListener()
 	{
 		String botname="mybot";
 		String path=".";
