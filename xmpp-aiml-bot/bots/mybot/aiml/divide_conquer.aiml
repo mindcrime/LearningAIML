@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<aiml>
+	
+	<category>
+		<pattern>YES *</pattern>
+		<template>
+			<srai>YES</srai>
+			<sr />
+		</template>
+	</category>
+	
+	<category>
+		<pattern>YES</pattern>
+		<template>Good.</template>
+	</category>
+	
+	<category>
+		<pattern>I THINK SO</pattern>
+		<template>I hope to God you're right.</template>
+	</category>
+	
+</aiml>
