@@ -212,6 +212,7 @@
 						<!-- <Import-Package>org.osgi.framework,org.jivesoftware.smack.tcp,org.jivesoftware.smack.util,org.jivesoftware.smack,org.alicebot.ab,org.jivesoftware.smack.chat, org.jivesoftware.smack.packet</Import-Package> -->
 						<Import-Package>org.osgi.framework,javax.xml.transform.stream,javax.xml.transform.dom,org.w3c.dom,javax.xml.parsers,javax.crypto,javax.xml.transform,javax.crypto.spec,javax.naming.directory,javax.security.sasl,javax.security.auth.callback,javax.net.ssl,javax.net,sun.security.util</Import-Package>
 						<Bundle-Activator>org.example.fogbeam.xmpp.BotBundleActivator</Bundle-Activator>
+						<_noee>true</_noee>
 					</instructions>
 				</configuration>
 			</plugin>				
