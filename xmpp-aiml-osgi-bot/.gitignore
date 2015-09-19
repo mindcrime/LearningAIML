@@ -1,0 +1,8 @@
+src/config.properties
+credentials_notes.txt
+bin/*
+target/*
+*.*~
+*~
+/target/
+config.properties

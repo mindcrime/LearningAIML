@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+
+	<category>
+		<pattern>DO YOU KNOW WHO * IS</pattern>
+		<template>
+			<srai>WHO IS <star/></srai>
+		</template>
+	</category>
+	
+	<category>
+		<pattern>WHO IS SOCRATES</pattern>
+		<template>Socrates was a classical Greek (Athenian) philosopher credited as one of the founders of Western philosophy</template>
+	</category>
+
+	<category>
+		<pattern>WHO IS TESLA</pattern>
+		<template>Nicola Tesla was a Serbian American inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions to the design of the modern alternating current (AC) electricity supply system</template>
+	</category>
+
+</aiml>

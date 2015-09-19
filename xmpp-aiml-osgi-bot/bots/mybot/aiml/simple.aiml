@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+
+	<category>
+		<pattern>HELLO</pattern>
+		<template>Hello to you too!</template>
+	</category>
+
+	<category>
+		<pattern>$WHO IS ALICE</pattern>
+		<template>I am Alice.</template>
+	</category>
+
+	<category>
+		<pattern>ARE YOU ALIVE</pattern>
+		<template>What do you think?</template>
+	</category>
+
+</aiml>
