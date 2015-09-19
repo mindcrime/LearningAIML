@@ -1,5 +1,7 @@
 package org.example.fogbeam.xmpp;
 
+import java.util.Date;
+
 import org.alicebot.ab.Bot;
 import org.jivesoftware.smack.chat.Chat;
 import org.jivesoftware.smack.chat.ChatMessageListener;
@@ -38,7 +40,26 @@ public class AIML_Interpreter_MessageListener implements ChatMessageListener
 		{
 			if( msgBody != null && !msgBody.isEmpty())
 			{				
-				String response = chatSession.multisentenceRespond(msgBody);
+				String response = "";
+				if( !msgBody.startsWith("@"))
+				{
+				
+					response = chatSession.multisentenceRespond(msgBody);
+				}
+				else
+				{
+					switch( msgBody )
+					{
+						case "@time":
+							Date now = new Date();
+							response = now.toString();
+							break;
+						default:
+							response = "unknown command";
+							break;
+					}
+				}
+
 				System.out.println("RESPONSE: " + response);
 			
 				// A little pause here, it's creepy if the bot responds too fast.

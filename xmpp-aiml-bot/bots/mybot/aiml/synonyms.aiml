@@ -10,6 +10,13 @@
 	</category>
 
 	<category>
+		<pattern>HEY</pattern>
+		<template>
+			<srai>HELLO</srai>
+		</template>
+	</category>
+
+	<category>
 		<pattern>HI THERE</pattern>
 		<template>
 			<srai>HELLO</srai>
