@@ -9,6 +9,6 @@ public class XmppChatListener implements ChatManagerListener
 	public void chatCreated(Chat chat, boolean createdLocally)
 	{
 		if (!createdLocally)
-			chat.addMessageListener(new AIML_Interpreter_MessageListener());;
+			chat.addMessageListener(new MultiSystem_MessageListener());;
 	}
 }
