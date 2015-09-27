@@ -7,12 +7,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Properties;
 
 import org.jivesoftware.smack.AbstractXMPPConnection;
-import org.jivesoftware.smack.ConnectionListener;
 import org.jivesoftware.smack.ReconnectionManager;
-import org.jivesoftware.smack.XMPPConnection;
-import org.jivesoftware.smack.chat.Chat;
 import org.jivesoftware.smack.chat.ChatManager;
-import org.jivesoftware.smack.chat.ChatManagerListener;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import org.jivesoftware.smack.util.TLSUtils;
@@ -54,61 +50,9 @@ public class BotBundleActivator implements BundleActivator
 		connection = new XMPPTCPConnection(configBuilder.build());
 		
 	
-		class MyConnectionListener  implements ConnectionListener {
-			
-			boolean m_reconnect = false;
-			
-			public boolean isReconnect()
-			{
-				return m_reconnect;
-			}
-			
-			@Override
-			public void connectionClosedOnError(Exception arg0) {
-				System.out.println( "connectionClosedOnError called!");
-				m_reconnect = true;
-				Thread.currentThread().interrupt();
-			}
-
-			@Override
-			public void authenticated(XMPPConnection arg0, boolean arg1) {
-				System.out.println( "authenticated called!");
-				
-			}
-
-			@Override
-			public void connected(XMPPConnection arg0) {
-				System.out.println( "connected called!");
-				
-			}
-
-			@Override
-			public void connectionClosed() {
-				System.out.println( "connectionClosed called!");
-				
-			}
-
-			@Override
-			public void reconnectingIn(int arg0) {
-				System.out.println( "reconnectingIn called!");
-				
-			}
-
-			@Override
-			public void reconnectionFailed(Exception arg0) {
-				System.out.println( "reconnectionFailed called!");
-				
-			}
-
-			@Override
-			public void reconnectionSuccessful() {
-				System.out.println( "reconnectionSuccessful called!");
-				
-			}
-		};		
+	
 		
-		
-		MyConnectionListener connectionListener = new MyConnectionListener();
+		XmppMessageListener connectionListener = new XmppMessageListener();
 
 		// make sure auto reconnect is turned on.
 		ReconnectionManager.getInstanceFor(connection).enableAutomaticReconnection();
@@ -127,15 +71,8 @@ public class BotBundleActivator implements BundleActivator
 			connection.login();
 	
 			ChatManager chatManager = ChatManager.getInstanceFor(connection);
-			chatManager.addChatListener(
-				new ChatManagerListener() {
-					@Override
-					public void chatCreated(Chat chat, boolean createdLocally)
-					{
-						if (!createdLocally)
-							chat.addMessageListener(new AIML_Interpreter_MessageListener());;
-					}
-				});	
+			XmppChatListener chatListener = new XmppChatListener();
+			chatManager.addChatListener(chatListener);	
 		
 			System.out.println( "bot running..." );
 			
